@@ -59,7 +59,7 @@ def possible_bag_power(game):
             max_counts.Blue = t.Blue
     return calc_power(max_counts)
 
-file2 = open('inputs/day2.txt', 'r')
+file2 = open('../Inputs/day2.txt', 'r')
 lines = file2.readlines()
 
 games = [ParseGame(l) for l in lines]

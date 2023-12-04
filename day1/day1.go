@@ -47,7 +47,7 @@ func puzzle2(lines []string) {
 }
 
 func main() {
-	file, err := os.Open("./input/day1.txt")
+	file, err := os.Open("../Inputs/day1.txt")
 	if err != nil {
 		fmt.Printf("error opening file: %v\n", err)
 		os.Exit(1)

@@ -38,7 +38,3 @@ while current_node != 'ZZZ':
         raise Exception('Unknown instruction')
 
 print("part 1: ", steps)
-
-# part 2
-navigation_nodes = [n for n in nodes if n[2] == 'A']
-]

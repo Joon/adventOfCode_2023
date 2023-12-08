@@ -27,4 +27,4 @@ print("Part 1: " + str(part1))
 long_race_time = "".join([str(t) for t in times])
 long_race_distance = "".join([str(d) for d in distances])
 
-print("Part 2", win_count(int(long_race_time), int(long_race_distance)))
+print("Part 2:", win_count(int(long_race_time), int(long_race_distance)))

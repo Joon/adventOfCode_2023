@@ -118,7 +118,7 @@ while current_point != starting_point:
     steps.append(current_point)
     current_point = navigate(current_point, lines, steps[-2])
 
-# print_path(lines, steps)
+print_path(lines, steps)
 
 # The furthest point from the starting point (as navigated in this path) is halfway
 print("Part 1:", len(steps) / 2) 

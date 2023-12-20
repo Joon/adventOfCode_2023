@@ -149,6 +149,7 @@ for term in accept_terminuses:
             if rule[5] == "not":
                 local_op += '='
             current_filters[rule[4]].append("x" + local_op + rule[3])
+    # This is slow - needs to loop through 1 to 4000 for each value. But it works.
     candidate = filter_match(current_filters['x']) * filter_match(current_filters['m']) * filter_match(current_filters['a']) * filter_match(current_filters['s'])
     if (candidate > 0):
         possible_values += candidate

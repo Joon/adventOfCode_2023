@@ -1,10 +1,8 @@
-world = [[c for c in l.strip()] for l in open('inputs/day23_test.txt', 'r').readlines()]
+world = [[c for c in l.strip()] for l in open('inputs/day23.txt', 'r').readlines()]
 
 start_pos = world[0].index('.'), 0
 
 target_pos = world[-1].index('.'), len(world) - 1
-
-print(start_pos)
 
 def walk_back_to_first_branch(world, target_pos, obey_slope):
     neighbours = [target_pos]
@@ -75,9 +73,9 @@ def render_world_as_graph(world, start_pos, obey_slope):
                     path_stack.append((n, current_pos, nodes))
         else:
             # length is zero, we are at the end
-            if pos not in path_graph:
-                path_graph[pos] = {}
-            path_graph[pos][current_pos] = len(walked) + 1
+            if last_pos not in path_graph:
+                path_graph[last_pos] = {}
+            path_graph[last_pos][current_pos] = len(walked) - 2
             if current_pos not in path_graph:
                 path_graph[current_pos] = {}
 
@@ -126,6 +124,3 @@ def neighbors(world, pos, obey_slope):
 print("Part 1:", max([p for p in all_paths(world, start_pos, target_pos)]))
 
 print("Part 2:", max([p for p in all_paths_optimized(world, start_pos, target_pos)]))
-
-world_graph = render_world_as_graph(world, start_pos, True)
-print(world_graph)

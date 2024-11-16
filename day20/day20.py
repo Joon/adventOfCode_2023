@@ -18,8 +18,10 @@ class PulseSink:
         self.name = name
         self.high_pulse_count = 0
         self.low_pulse_count = 0
+        self.senders = []
 
     def register_sender(self, sender):
+        self.senders.append(sender)
         pass
     
     def notify(self, pulse, sender):
@@ -37,12 +39,14 @@ class FlipFlopModule:
         self.name = name
         self.last_state = False
         self.listeners = []
+        self.senders = []
 
     def register(self, listener):
         self.listeners.append(listener)
         listener.register_sender(self)
 
     def register_sender(self, sender):
+        self.senders.append(sender)
         pass
         
     def notify(self, pulse, sender):
@@ -72,12 +76,14 @@ class ConjunctionModule:
         self.last_state = False
         self.listeners = []
         self.received_pulses = {}
+        self.senders = []
 
     def register(self, listener):
         self.listeners.append(listener)
         listener.register_sender(self)
         
     def register_sender(self, sender):
+        self.senders.append(sender)
         if sender not in self.received_pulses:
             self.received_pulses[sender.name] = 0
 
@@ -166,14 +172,11 @@ print("Part 1", (total_low_pulse) * (total_high_pulse))
 # Part 2
 part2_modules = load_modules(lines)
 
-push_count = 0
-while True:
-    push_count += 1
-    if push_count % 100000 == 0:
-        print(push_count)
-    low_pulse, high_pulse = broadcast(0, part2_modules)
-    if part2_modules["rx"].low_pulse_count > 0:
-        break
 
-print("Part 2", push_count)
+for x in range(1000000):
+    broadcast(0, part2_modules)
+
+rx_writers = part2_modules["rx"].senders
+
+print("Part 2", 15)
     
